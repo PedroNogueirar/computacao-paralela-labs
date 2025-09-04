@@ -4,8 +4,8 @@
 #include <sys/wait.h>
 #include <time.h>
 
-#define VECTOR_SIZE 1000
-#define NUM_PROCESSES 4
+#define VECTOR_SIZE 1000000
+#define NUM_PROCESSES 1
 
 // Funcao que calcula a soma de uma fatia de um vetor
 long long sum_chunk(int* vector, int start, int end) {
@@ -106,6 +106,8 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &end);
     double time_spent = (end.tv_sec - start.tv_sec) +
                         (end.tv_nsec - start.tv_nsec) / 1e9;
+    
+    printf("Versao paralela com %d processos executou em %f segundos\n", NUM_PROCESSES, time_spent);
 
     return 0;
 }
